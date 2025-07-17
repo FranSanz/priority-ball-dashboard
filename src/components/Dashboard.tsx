@@ -6,6 +6,7 @@ import { ProjectCard } from './ProjectCard';
 import { AddProjectDialog } from './AddProjectDialog';
 import { TimelineSection } from './TimelineSection';
 import { BacklogSection } from './BacklogSection';
+import { ThemeToggle } from './ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -69,6 +70,8 @@ export function Dashboard() {
               </p>
             </div>
             <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <Separator orientation="vertical" className="h-6" />
               <AddProjectDialog onAdd={addProject} projectCount={projects.length} />
               <Button variant="outline" onClick={handleSave}>
                 <Save className="w-4 h-4 mr-2" />
