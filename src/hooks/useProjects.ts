@@ -16,6 +16,10 @@ export function useProjects() {
           ...p,
           createdAt: new Date(p.createdAt),
           assignedDate: p.assignedDate ? new Date(p.assignedDate) : undefined,
+          attachments: p.attachments?.map((a: any) => ({
+            ...a,
+            uploadedAt: new Date(a.uploadedAt || Date.now())
+          })) || [],
         })));
       } catch (error) {
         console.error('Failed to load projects:', error);

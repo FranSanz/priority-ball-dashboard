@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
+import { AttachmentsManager } from './AttachmentsManager';
 import { Trash2, Save } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -175,6 +176,12 @@ export function ProjectCard({ project, isOpen, onClose, onUpdate, onDelete }: Pr
             </div>
           </div>
 
+          {/* Attachments Manager */}
+          <AttachmentsManager
+            attachments={editedProject.attachments}
+            onAttachmentsChange={(attachments) => updateField('attachments', attachments)}
+          />
+
           {/* Project Stats */}
           <div className="flex gap-2">
             <Badge variant="outline">
@@ -186,6 +193,11 @@ export function ProjectCard({ project, isOpen, onClose, onUpdate, onDelete }: Pr
             <Badge variant="outline">
               Total Score: {editedProject.effort + editedProject.benefit}/20
             </Badge>
+            {editedProject.attachments.length > 0 && (
+              <Badge variant="secondary">
+                {editedProject.attachments.length} attachment{editedProject.attachments.length !== 1 ? 's' : ''}
+              </Badge>
+            )}
           </div>
         </CardContent>
 

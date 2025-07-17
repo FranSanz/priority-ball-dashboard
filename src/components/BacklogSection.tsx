@@ -1,6 +1,7 @@
 import { Project } from '@/types/project';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Paperclip } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface BacklogSectionProps {
@@ -52,7 +53,7 @@ function ProjectBacklogCard({ project, onClick }: ProjectBacklogCardProps) {
           </h4>
         </div>
         
-        <div className="flex gap-1">
+        <div className="flex flex-wrap gap-1">
           <Badge variant="outline" className="text-xs">
             Effort: {project.effort}
           </Badge>
@@ -62,6 +63,12 @@ function ProjectBacklogCard({ project, onClick }: ProjectBacklogCardProps) {
           <Badge variant="secondary" className="text-xs">
             Score: {project.effort + project.benefit}
           </Badge>
+          {project.attachments && project.attachments.length > 0 && (
+            <Badge variant="secondary" className="text-xs flex items-center gap-1">
+              <Paperclip className="w-3 h-3" />
+              {project.attachments.length}
+            </Badge>
+          )}
         </div>
 
         {project.discovery && (

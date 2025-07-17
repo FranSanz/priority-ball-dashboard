@@ -1,6 +1,7 @@
 import { Project } from '@/types/project';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Paperclip } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface TimelineSectionProps {
@@ -72,13 +73,19 @@ function ProjectMiniCard({ project, onClick }: ProjectMiniCardProps) {
             {project.title}
           </h4>
         </div>
-        <div className="flex gap-1">
+        <div className="flex items-center gap-1">
           <Badge variant="outline" className="text-xs">
             E: {project.effort}
           </Badge>
           <Badge variant="outline" className="text-xs">
             B: {project.benefit}
           </Badge>
+          {project.attachments && project.attachments.length > 0 && (
+            <Badge variant="secondary" className="text-xs flex items-center gap-1">
+              <Paperclip className="w-3 h-3" />
+              {project.attachments.length}
+            </Badge>
+          )}
         </div>
         {project.nextSteps && (
           <p className="text-xs text-muted-foreground truncate">

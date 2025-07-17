@@ -19,7 +19,7 @@ export interface Project {
   
   // Media
   images: string[];
-  attachments: { name: string; url: string }[];
+  attachments: { id: string; name: string; dataUrl: string; size: number; type: string; uploadedAt: Date }[];
 }
 
 export interface ProjectStore {
